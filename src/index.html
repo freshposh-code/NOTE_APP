@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Note App</title>
+
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="sidebar" data-sidebar>
+
+        <div class="wrapper wrapper-1">
+            <a href="/">
+                <ion-icon name="bookmarks" class="logo-light"></ion-icon>
+            </a>
+
+            <button class="menu-btn icon-btn large" aria-label="Close menu" data-sidebar-toggler>
+
+                <ion-icon name="close-circle-outline" aria-hidden="true" class="material-symbols-rounded"></ion-icon>
+
+                <div class="state-layer"></div>
+            </button>
+        </div>
+
+        <button class="fab" data-note-create-btn>
+            <ion-icon name="add" aria-hidden="true" class="material-symbols-rounded"></ion-icon>
+
+            <span class="text text-label-large">New Note</span>
+
+            <div class="state-layer"></div>
+        </button>
+
+
+        <div class="wrapper wrapper-2">
+            <h2 class="text-title-small">NOTEBOOKS</h2>
+
+            <button class="icon-btn small" data-tooltip="Create new notebook" aria-label="Create new notebook"
+                data-add-notebook>
+                <ion-icon name="add" aria-hidden="true" class="material-symbols-rounded"></ion-icon>
+
+                <div class="state-layer"></div>
+            </button>
+        </div>
+
+        <nav class="custom-scrollbar" data-sidebar-list>
+            <div class="nav-item">
+
+                <span class="text text-label-large" data-notebook-field>My Notebook</span>
+
+                <button class="icon-btn small" aria-label="Edit notebook" data-tooltip="Edit notebook" data-edit-btn>
+                    <ion-icon name="create" class="material-symbols-rounded"></ion-icon>
+
+                    <div class="state-layer"></div>
+                </button>
+
+
+                <button class="icon-btn small" aria-label="Edit notebook" data-tooltip="Delete notebook"
+                    data-delete-btn>
+                    <ion-icon name="trash" class="material-symbols-rounded"></ion-icon>
+
+                    <div class="state-layer"></div>
+                </button>
+
+                <div class="state-layer"></div>
+
+            </div>
+        </nav>
+
+        <div class="cp-info"></div>
+
+    </header>
+</body>
+
+<script src="index.js"></script>
+
+</html>
