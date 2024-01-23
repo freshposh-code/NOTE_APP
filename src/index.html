@@ -20,7 +20,7 @@
 
         <div class="wrapper wrapper-1">
             <a href="/">
-                <ion-icon name="bookmarks" class="logo-light"></ion-icon>
+                <ion-icon name="bookmarks" class="logo"></ion-icon>
             </a>
 
             <button class="menu-btn icon-btn large" aria-label="Close menu" data-sidebar-toggler>
@@ -52,6 +52,29 @@
         </div>
 
         <nav class="custom-scrollbar" data-sidebar-list>
+
+            <div class="nav-item active">
+
+                <span class="text text-label-large" data-notebook-field>My Notebook</span>
+
+                <button class="icon-btn small" aria-label="Edit notebook" data-tooltip="Edit notebook" data-edit-btn>
+                    <ion-icon name="create" class="material-symbols-rounded"></ion-icon>
+
+                    <div class="state-layer"></div>
+                </button>
+
+
+                <button class="icon-btn small" aria-label="Edit notebook" data-tooltip="Delete notebook"
+                    data-delete-btn>
+                    <ion-icon name="trash" class="material-symbols-rounded"></ion-icon>
+
+                    <div class="state-layer"></div>
+                </button>
+
+                <div class="state-layer"></div>
+
+            </div>
+
             <div class="nav-item">
 
                 <span class="text text-label-large" data-notebook-field>My Notebook</span>
@@ -73,11 +96,143 @@
                 <div class="state-layer"></div>
 
             </div>
+
         </nav>
 
-        <div class="cp-info"></div>
+        <div class="cp-info">
+            <span class="text-label-large">Copyright 2024</span>
+        </div>
 
     </header>
+
+    <div class="overlay" data-sidebar-overlay data-sidebar-toggler></div>
+
+    <main class="main">
+
+        <div class="header">
+
+            <div class="wrapper">
+                <p class="title text-title-large" data-greeting>Good Morning</p>
+
+                <span class="text text-body-medium" data-current-date>22, jan 22 2024</span>
+            </div>
+
+            <button class="theme-btn icon-btn large" aria-label="Toggle theme" data-tooltip="Toggle theme"
+                data-thme-btn>
+                <ion-icon class="material-symbols-rounded light-icon" name="moon"></ion-icon>
+
+                <ion-icon class="material-symbols-rounded dark-icon" name="sunny"></ion-icon>
+
+                <div class="state-layer"></div>
+            </button>
+
+            <button class="menu-btn icon-btn large" aria-label="Open menu" data-sidebar-toggler>
+                <ion-icon class="material-symbols-rounded" name="menu"></ion-icon>
+
+                <div class="state-layer"></div>
+            </button>
+        </div>
+
+        <h2 class="title text-title-medium" style="margin: 1px 0 5px 0;" data-note-panel-title>My Notebook</h2>
+
+
+
+        <!-- NOTE LIST -->
+
+        <div class="note-list" data-note-panel>
+
+            <!-- 
+            <div class="card">
+                <h3 class="card-title text-title-medium">Note title</h3>
+
+                <p class="card-text-text-body-large">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
+                    dolor? Non consequuntur molestiae dolorem vel</p>
+
+                <div class="wrapper">
+                    <div class="card-time text-label-large">20 min ago</div>
+
+                    <button class="icon-btn large" aria-label="Delete note" data-tooltip="Delete note">
+                        <ion-icon class="material-symbols-rounded" name="trash"></ion-icon>
+
+                        <div class="state-layer"></div>
+                    </button>
+                </div>
+
+                <div class="state-layer"></div>
+            </div> -->
+
+
+        </div>
+
+        <!-- FAB BUTTON FOR MOBILE -->
+
+        <button class="fab" aria-label="New note" data-note-create-btn>
+            <ion-icon class="material-symbols-rounded" name="add"></ion-icon>
+
+            <!-- <span class="text text-label-large">New note</span> -->
+
+            <div class="state-layer"></div>
+        </button>
+
+        <!-- <div class="modal">
+
+            <button class="icon-btn large" aria-label="Close modal">
+                <ion-icon class="material-symbols-rounded" name="close"></ion-icon>
+
+                <div class="state-layer"></div>
+            </button>
+
+            <input type="text" placeholder="Untitled" value="Untitled" class="modal-title text-title-medium"
+                data-notebook-field>
+
+            <textarea placeholder="Take a note..." class="modal-text text-body-large custom-scrollbar"
+                data-notebook-field></textarea>
+
+            <div class="modal-footer">
+                <span class="time text-label-large">20 min ago</span>
+
+                <button class="btn text" data-submit-btn>
+                    <span class="text-label-large">Save</span>
+
+                    <div class="state-layer"></div>
+                </button>
+            </div>
+
+        </div> -->
+
+        <!-- <div class="overlay modal-overlay" data-modal-overlay></div>
+
+        <div class="modal">
+
+            <h3 class="modal-title text-title-medium">Are you sure you want to delete <strong>"Note title'</strong> ?
+            </h3>
+
+            <div class="modal-footer">
+
+                <button class="btn text">
+                    <span class="text-label-large">Cancel</span>
+
+                    <div class="state-layer"></div>
+                </button>
+
+                <button class="btn fill">
+                    <span class="text-label-large">Delete</span>
+
+                    <div class="state-layer"></div>
+                </button>
+            </div>
+
+        </div> -->
+
+        <!-- <span class="tooltip text-body-small">Tolltip text</span> -->
+        <!-- 
+        <div class="empty-notes">
+            <ion-icon class="material-symbols-rounded" aria-hidden="true" name="paper"></ion-icon>
+
+            <div class="text-headline-small">No notes</div>
+        </div> -->
+
+    </main>
 </body>
 
 <script src="index.js"></script>
