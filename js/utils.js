@@ -12,6 +12,31 @@ const addEventOnElelments = function ($elements, eventType, callback) {
     $elements.forEach($elements => $elements.addEventListener(eventType, callback))
 }
 
+let $lastActiveNavItem;
+
+/**
+ * Activate a navigation item by adding the 'active class and deactivates the previously active item
+ */
+const activeNotebook = function () {
+    $lastActiveNavItem?.classList?.remove('active');
+    this.classList.add('active');
+    $lastActiveNavItem = this;
+}
+
+/**
+ * 
+ * @param {HTMLElement} $element -The DOM element to make editable
+ */
+
+const makeElemEditable = function ($element) {
+    $element.setAttribute('contenteditable', true);
+    $element.focus();
+}
+
+console.log(makeElemEditable)
+
 export {
-    addEventOnElelments
+    addEventOnElelments,
+    activeNotebook,
+    makeElemEditable
 }

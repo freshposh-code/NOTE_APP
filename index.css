@@ -432,6 +432,7 @@ body {
 
 .nav-item {
     color: var(--on-surface-variant);
+    background: var(--secondary-container);
     --state-layer-bg: var(--on-surface-variant);
     height: 56px;
     display: flex;
@@ -440,6 +441,7 @@ body {
     padding-inline: var(--spacing-4) var(--spacing-6);
     border-radius: var(--radius-full);
     cursor: pointer;
+    margin: 10px 0 10px 0;
 }
 
 .nav-item.active {
