@@ -432,8 +432,7 @@ body {
 
 .nav-item {
     color: var(--on-surface-variant);
-    background: var(--secondary-container);
-    --state-layer-bg: var(--on-surface-variant);
+    /* --state-layer-bg: var(--on-surface-variant); */
     height: 56px;
     display: flex;
     align-items: center;
@@ -447,7 +446,6 @@ body {
 .nav-item.active {
     background-color: var(--secondary-container);
     color: var(--on-secondary-container);
-    --state-layer-bg: var(var(--on-secondary-container))
 }
 
 .nav-item .text {
