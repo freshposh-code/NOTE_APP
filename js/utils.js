@@ -31,12 +31,21 @@ const activeNotebook = function () {
 const makeElemEditable = function ($element) {
     $element.setAttribute('contenteditable', true);
     $element.focus();
-}
+};
 
-console.log(makeElemEditable)
+/**
+ * Generate a unique ID based on the current timestamp.
+ * 
+ * @returns {string} A string representation of the current timestamp.
+ */
+
+const generateID = function () {
+    return new Date().getTime().toString();
+}
 
 export {
     addEventOnElelments,
     activeNotebook,
-    makeElemEditable
+    makeElemEditable,
+    generateID
 }

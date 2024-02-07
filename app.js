@@ -6,6 +6,7 @@ import { Tooltip } from "./js/Tolltip.js";
 import { activeNotebook } from "./js/utils.js";
 import { makeElemEditable } from "./js/utils.js";
 import { db } from "./js/db.js";
+import { client } from "./js/client.js";
 
 // TOGGLE SIDEBAR IN SMALL SCREEEN
 
@@ -47,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const option = { weekday: 'long', day: 'numeric', year: 'numeric', month: 'long' };
         const currentDate = new Date().toLocaleDateString('en-us', option);
 
-        return currentDate
-    }
+        return currentDate;
+    };
 
     // Update greetings and current date
     function updateGreetingsAndDate() {
@@ -113,5 +114,10 @@ $addNoteButtonBtn.addEventListener('click', showNotebookField);
 const createNotebook = function (event) {
     if (event.key === 'Enter') {
         // Store new created notebook in database
+        const notebookData = db.post.notebook(this.textContent || 'Untitled'); //this:$navItemField
+        this.parentElement.remove();
+
+        // Render NavItem
+        client.notebook.create(notebookData);
     }
 }
