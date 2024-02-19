@@ -552,12 +552,15 @@ body {
 /* MODAL */
 
 .modal {
-    margin-top: 3.5rem;
+    margin-top: 15rem;
     background-color: var(--surface-container-highest);
     border-radius: var(--radius-large);
     padding: var(--spacing-6);
     box-shadow: var(--shadow-3);
     z-index: 8;
+    position: absolute;
+    top: 0;
+    width: 600px;
 }
 
 .modal .icon-btn {
@@ -706,7 +709,7 @@ title {
 
 .empty-notes {
     position: absolute;
-    top: 40%;
+    top: -0%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -739,6 +742,7 @@ title {
 }
 
 @media (min-width: 992px) {
+
     /* MAIN */
 
     body {
@@ -790,5 +794,25 @@ title {
         max-width: 1400px;
         width: 100%;
         margin-inline: auto;
+    }
+}
+
+@media (max-width: 760px) {
+    .modal {
+        background-color: var(--surface-container-highest);
+        border-radius: var(--radius-large);
+        padding: var(--spacing-6);
+        box-shadow: var(--shadow-3);
+        z-index: 8;
+        width: 100%;
+    }
+
+    .empty-notes {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: var(--on-surface-variant);
+        margin-top: 10em;
     }
 }
