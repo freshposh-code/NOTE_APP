@@ -7,6 +7,7 @@ import { activeNotebook } from "./js/utils.js";
 import { makeElemEditable } from "./js/utils.js";
 import { db } from "./js/db.js";
 import { client } from "./js/client.js";
+import { NoteModal } from "./js/Modal.js";
 
 // TOGGLE SIDEBAR IN SMALL SCREEEN
 
@@ -121,3 +122,55 @@ const createNotebook = function (event) {
         client.notebook.create(notebookData);
     }
 }
+
+/**
+ * Renders the existing notebook list by retrieving data from the database and passing it to the client.
+ */
+const renderExistingNotebook = function () {
+    const notebookList = db.get.notebook();
+    client.notebook.read(notebookList);
+    // console.log(notebookList)
+};
+
+renderExistingNotebook();
+
+/**Create new note
+ * 
+ * Attaches event listeners to a collection of DOM elements representing "Create Note" buttons.
+ * When a button is clicked, it opens a modal for creating a new note and handles the submission
+ * of the new note to the database and client.
+ */
+
+const $noteCreateBtns = document.querySelectorAll('[data-note-create-btn]');
+
+addEventOnElelments($noteCreateBtns, 'click', function () {
+    // Create and open new modal
+    const modal = NoteModal();
+    modal.open();
+
+    // Handle the submission od the new note to the database and client 
+    modal.onSubmit(noteObj => {
+        const activeNotebookId = document.querySelector('[data-notebook].active').dataset.notebook;
+
+        const noteData = db.post.note(activeNotebookId, noteObj);
+        client.note.create(noteData)
+        modal.close();
+    })
+});
+
+/**
+ * Renders existing notes in the active notebook. Retrieves note data from the database based
+ *  on the active notebook's ID and uses the client to display the notes.
+ */
+const renderExistedNote = function () {
+    const activeNotebookId = document.querySelector('[data-notebook].active')?.dataset.notebook;
+
+    if (activeNotebookId) {
+        const noteList = db.get.note(activeNotebookId);
+
+        // Display existing note
+        client.note.read(noteList);
+    }
+}
+
+renderExistedNote();

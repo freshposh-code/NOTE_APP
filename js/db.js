@@ -1,6 +1,6 @@
 'use strict'
 
-import { generateID } from "./utils.js";
+import { findNotebook, findNotebookIndex, generateID } from "./utils.js";
 
 
 // DB Object
@@ -100,6 +100,91 @@ export const db = {
             writeDB();
 
             return notebookData;
+        },
+        note(notebookId, object) {
+            readDB();
+
+            const notebook = findNotebook(noteKeeperDB, notebookId);
+
+            const noteData = {
+                id: generateID(),
+                notebookId,
+                ...object,
+                postedOn: new Date().getTime()
+            }
+
+            notebook.notes.unshift(noteData);
+            writeDB();
+
+            return noteData;
+        }
+
+    },
+
+    get: {
+        /**
+         * Retrieves all notebooks from the database.
+         * 
+         * @function
+         * @return {Array<Object>} An array of notebook objects.
+         */
+        notebook() {
+            readDB();
+
+            return noteKeeperDB.notebooks;
+        },
+
+        /**
+         * Retrieve all notes within a specified notebook.
+         * 
+         * @function
+         * @param {string} notebookId - The ID of the notebook to retrieve notes from.
+         * @returns {Array<Object>} - An array of note objects.
+         */
+
+        note(notebookId) {
+            readDB();
+
+            const notebook = findNotebook(noteKeeperDB, notebookId);
+            return notebook.notes
+        }
+    },
+
+    update: {
+        /**
+         * Update the name of a notebook in the database.
+         * @function 
+         * @param {string} notebookId - The ID of the notebook to update.
+         * @param {string} name - The new name for the notebook
+         * @returns {Object} The updated notebook object.
+         */
+        notebook(notebookId, name) {
+            readDB();
+
+            const notebook = findNotebook(noteKeeperDB, notebookId);
+            notebook.name = name;
+
+            writeDB();
+
+            return notebook;
+        }
+    },
+
+    delete: {
+
+        /**
+         * @function
+         * @param {string} notebookId - The ID of the notebook to delete
+         */
+
+        notebook(notebookId) {
+            readDB();
+
+            const notebookIndex = findNotebookIndex(noteKeeperDB, notebookId);
+            console.log(notebookIndex)
+            noteKeeperDB.notebooks.splice(notebookIndex, 1);
+
+            writeDB();
         }
     }
 };
