@@ -10,13 +10,21 @@ const $notePanelTitle = document.querySelector('[data-note-panel-title]')
 
 const $notePanel = document.querySelector('[data-note-panel]')
 
+const $noteCreateBtns = document.querySelectorAll('[data-note-create-btn]')
+
 const emptyNotesTemplate = `
 <div class="empty-notes">
 <ion-icon class="material-symbols-rounded" aria-hidden="true" name="paper"></ion-icon>
 
 <div class="text-headline-small">No notes</div>
-</div>`
+</div>
+`;
 
+const disableNoteCreateBtns = function (isThereAnyNotebook) {
+    $noteCreateBtns.forEach($item => {
+        $item[isThereAnyNotebook ? 'removeAttribute' : 'setAttribute']('disabled', '')
+    })
+}
 
 
 /**
@@ -44,6 +52,7 @@ export const client = {
             activeNotebook.call($navItem);
             $notePanelTitle.textContent = notebookData.name;
             $notePanel.innerHTML = emptyNotesTemplate;
+            disableNoteCreateBtns(true)
         },
 
         /**
@@ -52,6 +61,8 @@ export const client = {
          * @param {Array<Object>} notebookList - List of notebook data to display
          */
         read(notebookList) {
+            disableNoteCreateBtns(notebookList.length);
+
             notebookList.forEach((notebookData, index) => {
                 const $navItem = NavItem(notebookData.id, notebookData.name);
 
@@ -95,6 +106,7 @@ export const client = {
             } else {
                 $notePanelTitle.innerHTML = ``;
                 $notePanel.innerHTML = ``;
+                disableNoteCreateBtns(false);
             }
 
             $deleteNotebook.remove();
@@ -108,9 +120,12 @@ export const client = {
          * @param {Object} notebook - Data representing the new note
          */
         create(noteData) {
+            // Clear 'emptyNotesTemplate from 'notePanel if there is no existing note
+            if (!$notePanel.querySelector('[data-note]')) $notePanel.innerHTML = ''
+
             // Append card in notepanel
             const $card = Card(noteData);
-            $notePanel.appendChild($card);
+            $notePanel.prepend($card);
         },
 
         read(noteList) {
@@ -124,6 +139,31 @@ export const client = {
             } else {
                 $notePanel.innerHTML = emptyNotesTemplate
             }
+        },
+
+        /**
+         * Updates a note card in the UI based on provided note daa.
+         * 
+         * @param {string} noteId - ID of the note to update.
+         * @param {Object} noteData - New data for the note.
+         */
+
+        update(noteId, noteData) {
+            const $oldCard = document.querySelector(`[data-note="${noteId}"]`);
+            const $newCard = Card(noteData);
+            $notePanel.replaceChild($newCard, $oldCard);
+        },
+
+        /**
+         * Delete a note card from the UI
+         * 
+         * @param {string} noteId - ID of the note to delete
+         * @param {*} isNoteExists - Indicates whether other notes still exist.
+         */
+
+        delete(noteId, isNoteExists) {
+            document.querySelector(`[data-note="${noteId}"]`).remove();
+            if (!isNoteExists) $notePanel.innerHTML = emptyNotesTemplate;
         }
 
     }

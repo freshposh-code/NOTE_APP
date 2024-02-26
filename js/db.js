@@ -1,6 +1,6 @@
 'use strict'
 
-import { findNotebook, findNotebookIndex, generateID } from "./utils.js";
+import { findNotebook, findNotebookIndex, generateID, findNote, findNoteIndex } from "./utils.js";
 
 
 // DB Object
@@ -167,12 +167,32 @@ export const db = {
             writeDB();
 
             return notebook;
+        },
+
+        /**
+         * Updates the content of a note in the database
+         * 
+         * @function
+         * @param {string} noteId - The iD of the note to update
+         * @param {*} object - The updated data for the note
+         */
+
+        note(noteId, object) {
+            readDB();
+
+            const oldNote = findNote(noteKeeperDB, noteId);
+            const newNote = Object.assign(oldNote, object);
+
+            writeDB();
+
+            return newNote;
         }
     },
 
     delete: {
 
         /**
+         * Delete a notebook from the database.
          * @function
          * @param {string} notebookId - The ID of the notebook to delete
          */
@@ -185,6 +205,28 @@ export const db = {
             noteKeeperDB.notebooks.splice(notebookIndex, 1);
 
             writeDB();
+        },
+
+        /**
+         * Delete a note from a specified notebook in the database
+         * 
+         * @function
+         * @param {string} notebookId  - The ID of the notebook containing the note to delete.
+         * @param {*} noteId - The ID of the note to delete.
+         * @returns {Array<Object>} An array of remaining notes in the notebook.
+         */
+
+        note(notebookId, noteId) {
+            readDB();
+
+            const notebook = findNoteIndex(noteKeeperDB, notebookId);
+            const noteIndex = findNoteIndex(notebook, noteId);
+
+            notebook.notes.splice(noteIndex);
+
+            writeDB();
+
+            return notebook.notes;
         }
     }
 };
