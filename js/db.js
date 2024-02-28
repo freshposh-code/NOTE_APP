@@ -201,7 +201,6 @@ export const db = {
             readDB();
 
             const notebookIndex = findNotebookIndex(noteKeeperDB, notebookId);
-            console.log(notebookIndex)
             noteKeeperDB.notebooks.splice(notebookIndex, 1);
 
             writeDB();
@@ -219,15 +218,33 @@ export const db = {
         note(notebookId, noteId) {
             readDB();
 
-            const notebook = findNoteIndex(noteKeeperDB, notebookId);
+            const notebook = findNotebook(noteKeeperDB, notebookId);
             const noteIndex = findNoteIndex(notebook, noteId);
 
-            notebook.notes.splice(noteIndex);
+            notebook.notes.splice(noteIndex, 1);
+
+            // const notebookIndex = findNoteIndex(noteKeeperDB, notebookId);
+            // if (notebookIndex === -1) {
+            //     return null; // Notebook not found
+            // }
+
+            // const notebook = noteKeeperDB[notebookIndex];
+            // const noteIndex = findNoteIndex(notebook, noteId);
+            // if (noteIndex === -1) {
+            //     return null; // Note not found
+            // }
+
+            // notebook.notes.splice(noteIndex, 1); // Remove 1 element at noteIndex
 
             writeDB();
 
             return notebook.notes;
+
+            // return notebook.notes.length > 0 ? notebook.notes : []; // Ensure returning an array
         }
+
+
+
     }
 };
 
