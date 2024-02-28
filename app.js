@@ -1,13 +1,13 @@
 'use strict'
 
 // MODULE IMPORT
-import { addEventOnElelments } from "./js/utils.js";
-import { Tooltip } from "./js/Tolltip.js";
-import { activeNotebook } from "./js/utils.js";
-import { makeElemEditable } from "./js/utils.js";
-import { db } from "./js/db.js";
-import { client } from "./js/client.js";
-import { NoteModal } from "./js/Modal.js";
+import { addEventOnElelments } from "./utils.js";
+import { Tooltip } from "./Tolltip.js";
+import { activeNotebook } from "./utils.js";
+import { makeElemEditable } from "./utils.js";
+import { db } from "./db.js";
+import { client } from "./client.js";
+import { NoteModal } from "./Modal.js";
 
 // TOGGLE SIDEBAR IN SMALL SCREEEN
 
