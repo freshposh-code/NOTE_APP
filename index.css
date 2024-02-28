@@ -815,4 +815,13 @@ title {
         color: var(--on-surface-variant);
         margin-top: 10em;
     }
+
+    .card .icon-btn {
+        opacity: 1;
+        transition: opacity var(--tr-duration-short) var(--tr-easing-linear);
+    }
+
+    .card:where(:hover, :focus-visible) .icon-btn {
+        opacity: 1;
+    }
 }
