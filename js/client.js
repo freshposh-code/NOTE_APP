@@ -158,7 +158,7 @@ export const client = {
          * Delete a note card from the UI
          * 
          * @param {string} noteId - ID of the note to delete
-         * @param {*} isNoteExists - Indicates whether other notes still exist.
+         * @param {boolean} isNoteExists - Indicates whether other notes still exist.
          */
 
         delete(noteId, isNoteExists) {

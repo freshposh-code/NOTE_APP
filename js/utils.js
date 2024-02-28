@@ -134,7 +134,14 @@ const findNote = (db, noteId) => {
  */
 
 const findNoteIndex = function (notebook, noteId) {
-    return notebook.notes.findIndex(note => note.id === noteId);
+    return notebook.notes.findIndex(note => note.Id === noteId)
+    // // Check if notebook or notes is undefined
+    // if (!notebook || !notebook.notes) {
+    //     return -1; // Return a default value or handle the error appropriately
+    // }
+
+    // // Use optional chaining to safely access notes array
+    // return notebook.notes.findIndex(note => note.id === noteId);
 }
 
 
