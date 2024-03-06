@@ -13,12 +13,10 @@ import { NoteModal } from "./Modal.js";
 
 const $sidebar = document.querySelector('[data-sidebar]');
 const $sidebarTogglers = document.querySelectorAll('[data-sidebar-toggler]');
-// const $overlay = document.querySelector('[data-sidebar-overlay]');
 
 addEventOnElelments($sidebarTogglers, 'click', function () {
-    $sidebar.classList.toggle('active');
-    // $overlay.classList.toggle('active');
-});
+    $sidebar.classList.add('active')
+})
 
 // INITIALIZE TOOLTIP BEHAVIOUR FOR ALL DOM ELEMENT WITH 'DATA-TOOLTIP' ATTRIBUTE.
 
