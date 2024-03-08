@@ -16,11 +16,11 @@ const toggleTheme = function () {
 
 const storedTheme = localStorage.getItem('theme');
 
-const /**{Boolean} */ systemThemeIsDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+const setThemeisDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-const initialTheme = storedTheme ?? (systemThemeIsDark ? 'dark' : 'light');
+const InitialTheme = storedTheme ? (setThemeisDark ? 'dark' : 'light') : (setThemeisDark ? 'dark' : 'light');
 
-document.documentElement.setAttribute('data-theme', initialTheme);
+document.documentElement.setAttribute('data-theme', InitialTheme);
 
 
 // ATTTACH TOGGLETHEME TO THEME BUTTON CLICK EVENT
