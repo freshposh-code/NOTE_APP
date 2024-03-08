@@ -677,9 +677,13 @@ body {
     transition: transform var(--tr-duration-medium) var(--tr-easing-emphasized);
 }
 
-[dark-theme='dark'] .dark-icon,
+[data-theme='dark'] .theme-btn .dark-icon,
 .theme-btn .light-icon {
     display: none;
+}
+
+[data-theme='dark'] .theme-btn .light-icon {
+    display: block;
 }
 
 [data-theme='dark'] .theme-btn {
