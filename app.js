@@ -11,12 +11,12 @@ import { NoteModal } from "./Modal.js";
 
 // TOGGLE SIDEBAR IN SMALL SCREEEN
 
-const $sidebar = document.querySelector('[data-sidebar]');
 const $sidebarTogglers = document.querySelectorAll('[data-sidebar-toggler]');
 
 addEventOnElelments($sidebarTogglers, 'click', function () {
-    $sidebar.classList.add('active')
-})
+    const $sidebar = document.querySelector('[data-sidebar]');
+    $sidebar.classList.toggle('active');
+});
 
 // INITIALIZE TOOLTIP BEHAVIOUR FOR ALL DOM ELEMENT WITH 'DATA-TOOLTIP' ATTRIBUTE.
 
