@@ -71,7 +71,7 @@ const $sidebarList = document.querySelector('[data-sidebar-list]');
 const $addNoteButtonBtn = document.querySelector('[data-add-notebook]');
 
 /**
- * Shows a notebook creation field in the sidebar when teh "ADD Notebook" button is clicked.
+ * Shows a notebook creation field in the sidebar when the "ADD Notebook" button is clicked.
  * The function dynamically adds a new notebook field element,  makes it editable,  and listens for
  * the ENTER key to create a new notebook when pressed
  */
@@ -82,7 +82,6 @@ const showNotebookField = function () {
 
     $navItem.innerHTML = `
     <span class="text text-label-large" data-notebook-field>
-        <div class="state-layer"></div>
     </span>
     `
 
